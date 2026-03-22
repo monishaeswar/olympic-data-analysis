@@ -26,7 +26,7 @@ def clean_athletes(df: pd.DataFrame) -> pd.DataFrame:
 
     # Drop duplicates
     before = len(df)
-    df.drop_duplicates(inplace=True)
+    df.drop_duplicates(subset=[c for c in df.columns if c != "ID"], inplace=True)
     print(f"  Dropped {before - len(df):,} duplicate rows")
 
     # Impute numeric columns with sport-level medians
